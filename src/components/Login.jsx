@@ -7,9 +7,9 @@ const Login = () => {
     <div className="min-h-[75vh] mt-20">
       <div className="flex flex-col gap-3 w-[20%]  mx-auto px-6 py-8  rounded-md border">
         <div>
-          <h1 className=" text-xl font-extrabold">Login</h1>
+          <h1 className=" text-xl font-extrabold">{!isLoginPage ? "Login" : "Signup"}</h1>
           <h1 className=" text-sm opacity-70 mt-2 font-semibold">
-            Enter your email below to login to your account
+            { !isLoginPage ? "Enter your email below to login to your account" : "Enter your details below to create your account"}
           </h1>
         </div>
       { isLoginPage && <label className="form-control w-full max-w-xs">
@@ -18,7 +18,7 @@ const Login = () => {
           </div>
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Joe Smith"
             className="input input-bordered w-full max-w-xs"
           />
         </label>}

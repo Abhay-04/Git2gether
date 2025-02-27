@@ -35,7 +35,7 @@ const Login = () => {
         <button className="btn btn-active btn-primary">Login</button>
         <button className="btn btn-outline btn-primary">Login with Google</button>
 
-        <h1 className="text-center">Don't have an account?<Link className="underline">Sign up</Link></h1>
+        <h1 className="text-center font-semibold">Don't have an account?<Link className="ml-1 underline">Sign up</Link></h1>
       </div>
     </div>
   );

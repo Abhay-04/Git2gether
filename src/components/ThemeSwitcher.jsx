@@ -45,7 +45,7 @@ const ThemeSwitcher = () => {
   return (
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn m-1">
-        Theme
+        {selectedTheme.toUpperCase()}
         <svg
           width="12px"
           height="12px"
@@ -66,7 +66,7 @@ const ThemeSwitcher = () => {
               type="radio"
               name="theme-dropdown"
               className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-              aria-label={theme}
+              aria-label={theme.toUpperCase()}
               value={theme}
               checked={selectedTheme === theme}
               onChange={() => dispatch(setTheme(theme))}
@@ -79,15 +79,3 @@ const ThemeSwitcher = () => {
 };
 
 export default ThemeSwitcher;
-
-{/* <select
-      className="select select-bordered"
-      onChange={(e) => dispatch(setTheme(e.target.value))}
-    >
-      {themes.map((theme) => (
-        <option key={theme} value={theme}>
-          {theme}
-        </option>
-      ))}
-    </select>
-  ); */}

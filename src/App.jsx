@@ -5,9 +5,10 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <div className=" min-h-[100vh] ">
+    <div className="">
       <Header />
       <Outlet />
+      
       <Footer />
     </div>
   );

@@ -11,7 +11,7 @@ const Header = () => {
   }, [theme]);
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 pb-6">
         <div className="flex-1">
           <Link to={"/"} className="btn btn-ghost text-xl">Git2ogether</Link>
         </div>

@@ -58,7 +58,7 @@ const ThemeSwitcher = () => {
 
       <ul
         tabIndex={0}
-        className="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl max-h-96 overflow-y-auto"
+        className="dropdown-content bg-base-300 rounded-box z-[1] min-w-max p-2 shadow-2xl max-h-96 overflow-y-auto"
       >
         {themes.map((theme) => (
           <li key={theme}>

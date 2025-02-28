@@ -13,7 +13,7 @@ const Header = () => {
     <div>
       <div className="navbar bg-base-100 pb-6 sm:px-6 ">
         <div className="flex-1">
-          <Link to={"/"} className="btn btn-ghost text-xl">Git2ogether</Link>
+          <Link to={"/"} className="btn btn-ghost text-xl"> <img className="size-5"  src="https://www.svgrepo.com/show/327063/git-merge-sharp.svg"/>Git2ogether</Link>
         </div>
         
         <div className="flex-none gap-2">
@@ -21,7 +21,7 @@ const Header = () => {
           <ThemeSwitcher />
         </div>
           
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end ">
             <div
               tabIndex={0}
               role="button"

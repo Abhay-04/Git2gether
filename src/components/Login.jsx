@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const [isLoginPage , setIsLoginPage] = useState(false)
   return (
-    <div className="min-h-[75vh] mt-20">
-      <div className="flex flex-col gap-3 w-[20%]  mx-auto px-6 py-8  rounded-md border">
+    <div className="min-h-[75vh] my-20 mx-4 items-start  flex justify-between">
+      <div className="flex flex-col gap-3 mx-auto px-6 py-8  rounded-md border">
         <div>
           <h1 className=" text-xl font-extrabold">{!isLoginPage ? "Login" : "Signup"}</h1>
           <h1 className=" text-sm opacity-70 mt-2 font-semibold">
@@ -49,7 +49,7 @@ const Login = () => {
             {!isLoginPage && <Link className="label-text-alt">Forgot your password?</Link>}
           </div>
           <input
-            type="text"
+            type="password"
             placeholder=""
             className="input input-bordered w-full max-w-xs"
           />

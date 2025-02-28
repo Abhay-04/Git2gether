@@ -11,21 +11,16 @@ const Header = () => {
   }, [theme]);
   return (
     <div>
-      <div className="navbar bg-base-100 pb-6">
+      <div className="navbar bg-base-100 pb-6 sm:px-6 ">
         <div className="flex-1">
           <Link to={"/"} className="btn btn-ghost text-xl">Git2ogether</Link>
         </div>
-        <div>
+        
+        <div className="flex-none gap-2">
+        <div className="min-w-max  ">
           <ThemeSwitcher />
         </div>
-        <div className="flex-none gap-2">
-          <div className="form-control ">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input input-bordered w-24 md:w-auto"
-            />
-          </div>
+          
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}

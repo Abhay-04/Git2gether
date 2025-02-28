@@ -45,7 +45,7 @@ const ThemeSwitcher = () => {
   return (
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn m-1">
-        {selectedTheme.toUpperCase()}
+        {"THEME"}
         <svg
           width="12px"
           height="12px"

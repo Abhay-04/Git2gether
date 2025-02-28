@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/slices/userSlice";
+import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
 
 const Login = () => {
   const [isLoginPage, setIsLoginPage] = useState(false);
@@ -18,7 +19,7 @@ const Login = () => {
   const handleSignIn = async () => {
     try {
       const res = await axios.post(
-        "https://git2gether-backend.onrender.com/login",
+        `${BASE_URL_PROD}/login`,
         { email: email.current.value, password: password.current.value },
         { withCredentials: true }
       );

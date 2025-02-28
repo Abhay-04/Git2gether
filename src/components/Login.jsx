@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../store/slices/userSlice";
 import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
 
@@ -16,6 +16,12 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const userData = useSelector((state) => state.user);
+  if (userData) {
+    navigate("/");
+    return null;
+  }
   const handleSignIn = async () => {
     try {
       const res = await axios.post(
@@ -27,12 +33,11 @@ const Login = () => {
       dispatch(addUser(res.data.user));
       navigate("/");
     } catch (error) {
-      
       console.log(error);
     }
   };
 
-  return  (
+  return (
     <div className="min-h-[75vh] my-20 mx-4 items-start  flex justify-between">
       <div className="flex flex-col gap-3 mx-auto px-6 py-8  rounded-md border">
         <div>

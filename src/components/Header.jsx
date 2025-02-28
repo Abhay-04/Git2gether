@@ -1,11 +1,28 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ThemeSwitcher from "./ThemeSwitcher";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
+import { removeUser } from "../store/slices/userSlice";
 
 const Header = () => {
   const theme = useSelector((state) => state.theme.userTheme);
   const user = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const res = await axios.post(`${BASE_URL_PROD}/logout` , {} , { withCredentials: true })
+      dispatch(removeUser());
+      navigate("/login");
+     
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -15,7 +32,7 @@ const Header = () => {
     <div>
       <div className="navbar bg-base-100 pb-6 sm:px-6 ">
         <div className="flex-1">
-          <Link to={"/"} className="btn btn-ghost text-sm sm:text-xl font-bold">
+          <Link to={user == null ? "/login" : "/"} className="btn btn-ghost text-sm sm:text-xl font-bold">
             Git2gether
           </Link>
         </div>
@@ -56,7 +73,7 @@ const Header = () => {
                   <Link>Settings</Link>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <a onClick={handleLogout}>Logout</a>
                 </li>
               </ul>
             </div>

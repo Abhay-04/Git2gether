@@ -27,9 +27,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (!userData) {
-      fetchUser();
-    }
+    fetchUser();
   }, []);
 
   return (

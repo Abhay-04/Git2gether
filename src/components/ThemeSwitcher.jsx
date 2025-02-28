@@ -43,8 +43,8 @@ const ThemeSwitcher = () => {
   ];
 
   return (
-    <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn m-1">
+    <div className="dropdown ">
+      <div tabIndex={0} role="button" className="btn ">
         {"THEME"}
         <svg
           width="12px"

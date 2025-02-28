@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const theme = useSelector((state) => state.theme.userTheme);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -13,15 +14,16 @@ const Header = () => {
     <div>
       <div className="navbar bg-base-100 pb-6 sm:px-6 ">
         <div className="flex-1">
-          <Link to={"/"} className="btn btn-ghost text-xl"> <img className="size-5"  src="https://www.svgrepo.com/show/327063/git-merge-sharp.svg"/>Git2ogether</Link>
+          <Link to={"/"} className="btn btn-ghost text-sm sm:text-xl font-bold">Git2gether</Link>
         </div>
         
         <div className="flex-none gap-2">
         <div className="min-w-max  ">
           <ThemeSwitcher />
         </div>
+       
           
-          <div className="dropdown dropdown-end ">
+          {user && <div className="dropdown dropdown-end ">
             <div
               tabIndex={0}
               role="button"
@@ -30,7 +32,7 @@ const Header = () => {
               <div className="w-10 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  src={user.photoURL}
                 />
               </div>
             </div>
@@ -40,18 +42,24 @@ const Header = () => {
             >
               <li>
                 <a className="justify-between">
+                  {"Hi, " + user.firstName}
+                  
+                </a>
+              </li>
+              <li>
+                <a className="justify-between">
                   Profile
                   <span className="badge">New</span>
                 </a>
               </li>
               <li>
-                <Link to={"/feed"}>Settings</Link>
+                <Link >Settings</Link>
               </li>
               <li>
                 <a>Logout</a>
               </li>
             </ul>
-          </div>
+          </div>}
         </div>
       </div>
     </div>

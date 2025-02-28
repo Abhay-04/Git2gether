@@ -17,8 +17,8 @@ import store from "./store/store.js";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" errorElement={<Error />} element={<App />}>
-      <Route path="/" element={<Login />} />
-      <Route path="feed" element={<Feed />} />
+      <Route path="/" element={<Feed />} />
+      <Route path="/login" element={<Login />} />
       
       
       

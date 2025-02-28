@@ -27,11 +27,12 @@ const Login = () => {
       dispatch(addUser(res.data.user));
       navigate("/");
     } catch (error) {
+      
       console.log(error);
     }
   };
 
-  return (
+  return  (
     <div className="min-h-[75vh] my-20 mx-4 items-start  flex justify-between">
       <div className="flex flex-col gap-3 mx-auto px-6 py-8  rounded-md border">
         <div>

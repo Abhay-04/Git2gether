@@ -13,23 +13,22 @@ import Login from "./components/Login.jsx";
 import Error from "./components/Error.jsx";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
+import Profile from "./components/Profile.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" errorElement={<Error />} element={<App />}>
       <Route path="/" element={<Feed />} />
       <Route path="/login" element={<Login />} />
-      
-      
-      
+      <Route path="/profile" element={<Profile />} />
     </Route>
   )
 );
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Provider  store={store}>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>
 );

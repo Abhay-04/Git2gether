@@ -14,6 +14,7 @@ function App() {
   const navigate = useNavigate();
   const fetchUser = async () => {
     try {
+    
       const user = await axios.get(`${BASE_URL_PROD}/profile/view`, {
         withCredentials: true,
       });
@@ -33,7 +34,9 @@ function App() {
   return (
     <div className="overflow-hidden">
       <Header />
+      <div className="min-h-[80vh]">
       <Outlet />
+      </div>
 
       <Footer />
     </div>

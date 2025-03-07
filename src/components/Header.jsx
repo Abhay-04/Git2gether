@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
 import { removeUser } from "../store/slices/userSlice";
+import { removefeed } from "../store/slices/feedSlice";
+import { removeConnections } from "../store/slices/connectionsSlice";
 
 const Header = () => {
   const theme = useSelector((state) => state.theme.userTheme);
@@ -15,10 +17,15 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.post(`${BASE_URL_PROD}/logout` , {} , { withCredentials: true })
+      const res = await axios.post(
+        `${BASE_URL_PROD}/logout`,
+        {},
+        { withCredentials: true }
+      );
       dispatch(removeUser());
+      dispatch(removefeed());
+      dispatch(removeConnections());
       navigate("/login");
-     
     } catch (error) {
       console.log(error.message);
     }
@@ -32,7 +39,10 @@ const Header = () => {
     <div>
       <div className="navbar bg-base-100 pb-6 sm:px-6 ">
         <div className="flex-1">
-          <Link to={user == null ? "/login" : "/"} className="btn btn-ghost text-sm sm:text-xl font-bold">
+          <Link
+            to={user == null ? "/login" : "/"}
+            className="btn btn-ghost text-sm sm:text-xl font-bold"
+          >
             Git2gether
           </Link>
         </div>
@@ -70,7 +80,10 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link>Settings</Link>
+                  <Link to={"/connections"}>Connections</Link>
+                </li>
+                <li>
+                  <Link to={"/request"}>Requests</Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>

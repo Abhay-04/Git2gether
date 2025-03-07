@@ -14,6 +14,8 @@ import Error from "./components/Error.jsx";
 import { Provider } from "react-redux";
 import store from "./store/store.js";
 import Profile from "./components/Profile.jsx";
+import Connections from "./components/Connections.jsx";
+import Requests from "./components/Requests.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +23,8 @@ const router = createBrowserRouter(
       <Route path="/" element={<Feed />} />
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/connections" element={<Connections />} />
+      <Route path="/request" element={<Requests />} />
     </Route>
   )
 );

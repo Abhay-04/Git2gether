@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,8 @@ import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
 
 const Login = () => {
   const [isLoginPage, setIsLoginPage] = useState(false);
+  const [isErrorMessage, setErrorMessage] = useState(null);
+  const [userCreated, setUserCreated] = useState(null);
 
   const firstName = useRef(null);
   const lastName = useRef(null);
@@ -34,6 +36,36 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       console.log(error);
+      setErrorMessage(error.response.data);
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 3000);
+    }
+  };
+  const handleSignUp = async () => {
+    try {
+      const res = await axios.post(
+        `${BASE_URL_PROD}/signup`,
+        {
+          firstName: firstName.current.value,
+          lastName: lastName.current.value,
+          email: email.current.value,
+          password: password.current.value,
+        },
+        { withCredentials: true }
+      );
+
+      setIsLoginPage(false);
+      setUserCreated("User Created");
+      setTimeout(() => {
+        setUserCreated(null);
+      }, 3000);
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.response.data);
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 3000);
     }
   };
 
@@ -76,7 +108,7 @@ const Login = () => {
             />
           </label>
         )}
-        {isLoginPage && (
+        {/* {isLoginPage && (
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text font-semibold">Username</span>
@@ -88,7 +120,7 @@ const Login = () => {
               className="input input-bordered w-full max-w-xs"
             />
           </label>
-        )}
+        )} */}
 
         <label className="form-control w-full max-w-xs">
           <div className="label">
@@ -115,7 +147,10 @@ const Login = () => {
             className="input input-bordered w-full max-w-xs"
           />
         </label>
-        <button onClick={handleSignIn} className="btn btn-active btn-primary">
+        <button
+          onClick={!isLoginPage ? handleSignIn : handleSignUp}
+          className="btn btn-active btn-primary"
+        >
           {isLoginPage ? "Signup" : "Login"}
         </button>
         {!isLoginPage && (
@@ -133,6 +168,20 @@ const Login = () => {
           </Link>
         </h1>
       </div>
+      {isErrorMessage && (
+        <div className="toast toast-end">
+          <div className="alert alert-error">
+            <span>{isErrorMessage.toUpperCase()}</span>
+          </div>
+        </div>
+      )}
+      {userCreated && (
+        <div className="toast toast-end">
+          <div className="alert alert-success ">
+            <span>{userCreated}</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

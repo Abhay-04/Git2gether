@@ -1,12 +1,17 @@
-
 import { createSlice } from "@reduxjs/toolkit";
+
+// Get the theme from localStorage or default
+const initialTheme = localStorage.getItem("theme") || "dim";
 
 const themeSlice = createSlice({
   name: "theme",
-  initialState: { userTheme: "fantasy" }, // Default theme
+  initialState: {
+    userTheme: initialTheme,
+  },
   reducers: {
     setTheme: (state, action) => {
       state.userTheme = action.payload;
+      localStorage.setItem("theme", action.payload); // Persist theme
     },
   },
 });

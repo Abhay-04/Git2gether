@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BASE_URL_DEV } from "../utils/constants";
+import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../store/slices/connectionsSlice";

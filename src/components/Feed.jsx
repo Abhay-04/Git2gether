@@ -25,18 +25,14 @@ const Feed = () => {
   };
 
   useEffect(() => {
-    if (feed.length > 0) return;
+    if (feed.length > 0) return ;
     fetchFeed();
   }, []);
 
   return (
-    feed && (
+    feed.length > 0 && (
       <div className="flex justify-center items-center my-28 gap-6 flex-wrap">
-        {feed.map((feed) => {
-          return (
-            <Card key={feed._id} cardData = {feed} />
-          );
-        })}
+        <Card key={feed._id} cardData={feed[0]} />
       </div>
     )
   );

@@ -29,22 +29,13 @@ const Connections = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-y-12">
       <h2 className="text-primary text-2xl font-bold">Connections</h2>
+      <div className="flex gap-4">
       {connections.map((con) => {
         return (
-          <div key={con._id} className="flex justify-center  gap-x-6  ">
-            <div>
-              <img className="size-40 rounded-lg" src={con.photoURL} />
-            </div>
-            <div className="flex flex-col gap-1">
-              <div>{`${con.firstName} ${con.lastName}`}</div>
-              <div></div>
-              <div>{con.about}</div>
-              <div>{con.gender}</div>
-              <div>{con.skills}</div>
-            </div>
-          </div>
+         <Card key={con._id} cardData={con}/>
         );
       })}
+      </div>
     </div>
   );
 };

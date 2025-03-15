@@ -9,12 +9,13 @@ const Login = () => {
   const [isLoginPage, setIsLoginPage] = useState(false);
   const [isErrorMessage, setErrorMessage] = useState(null);
   const [userCreated, setUserCreated] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const firstName = useRef(null);
   const lastName = useRef(null);
-  const userName = useRef(null);
-  const email = useRef("abhay@gmail.com");
-  const password = useRef("Abhay@123");
+
+  const email = useRef(null);
+  const password = useRef(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -54,9 +55,11 @@ const Login = () => {
         },
         { withCredentials: true }
       );
+      
 
       setIsLoginPage(false);
       setUserCreated("User Created");
+      
       setTimeout(() => {
         setUserCreated(null);
       }, 3000);
@@ -108,19 +111,6 @@ const Login = () => {
             />
           </label>
         )}
-        {/* {isLoginPage && (
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text font-semibold">Username</span>
-            </div>
-            <input
-              ref={userName}
-              type="text"
-              placeholder="Username"
-              className="input input-bordered w-full max-w-xs"
-            />
-          </label>
-        )} */}
 
         <label className="form-control w-full max-w-xs">
           <div className="label">
@@ -128,6 +118,7 @@ const Login = () => {
           </div>
           <input
             ref={email}
+            defaultValue={"abhay@gmail.com"}
             type="email"
             placeholder="m@example.com"
             className="input input-bordered w-full max-w-xs"
@@ -140,12 +131,25 @@ const Login = () => {
               <Link className="label-text-alt">Forgot your password?</Link>
             )}
           </div>
-          <input
-            ref={password}
-            type="password"
-            placeholder=""
-            className="input input-bordered w-full max-w-xs"
-          />
+          <div className="relative w-full max-w-xs">
+            <input
+              ref={password}
+              defaultValue="Abhay@123"
+              type={!showPassword ? "password" : "text"}
+              placeholder="Enter your password"
+              className="input input-bordered w-full pr-16"
+            />
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute inset-y-0 right-4 flex items-center cursor-pointer"
+            >
+              {!showPassword ? (
+                <i className="ri-eye-close-fill"></i>
+              ) : (
+                <i className="ri-eye-fill"></i>
+              )}
+            </span>
+          </div>
         </label>
         <button
           onClick={!isLoginPage ? handleSignIn : handleSignUp}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { BASE_URL_DEV } from "../utils/constants";
+import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
 
 const Profile = () => {
   const user = useSelector((store) => store.user);
@@ -83,7 +83,7 @@ const Profile = () => {
   const handleUpdateProfile = async () => {
     try {
       const res = await axios.patch(
-        `${BASE_URL_DEV}/profile/edit`,
+        `${BASE_URL_PROD}/profile/edit`,
         {
           age: age.current.value,
           gender: gender.current.value.toLowerCase(),
@@ -130,7 +130,7 @@ const Profile = () => {
                 <p className="text-xs ">
                   Last Update on{" "}
                   <span className="font-semibold">
-                    {new Date(user.updatedAt).toLocaleDateString("en-GB", {
+                    {new Date(user.updatedAt).toLocaleDateString("en-IN", {
                       day: "2-digit",
                       month: "long",
                       year: "numeric",
@@ -144,7 +144,7 @@ const Profile = () => {
                   onClick={() => handleUpdateProfile()}
                   className="btn btn-sm btn-active btn-primary"
                 >
-                  Save
+                  <i className="ri-save-2-fill "></i> Save
                 </button>
               </div>
             </div>
@@ -167,7 +167,9 @@ const Profile = () => {
               </div>
             </div>
             <div>
-              <h1 className=" font-semibold">Personal Information</h1>
+              <h1 className=" font-semibold">
+                <i className="ri-user-3-fill mr-2"></i>Personal Information
+              </h1>
               <div className="grid grid-cols-12 gap-6 mt-6">
                 <label className="form-control w-full max-w-xs col-span-4">
                   <div className="label">
@@ -284,7 +286,7 @@ const Profile = () => {
                     </select>
                     {/* Selected Skills */}
                     {selectedSkills.length > 0 && (
-                      <div className="flex flex-wrap gap-2 border p-2 rounded-md mt-2 min-h-[40px]">
+                      <div className="flex flex-wrap gap-2 border p-2 rounded-md mt-5 min-h-[40px]">
                         {selectedSkills?.map((skill) => (
                           <button
                             key={skill}

@@ -1,9 +1,11 @@
 import axios from "axios";
-import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
+
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../store/slices/feedSlice";
 import Card from "./Card";
+import { BASE_URL } from "../utils/constants";
+import { AnimatePresence } from "framer-motion";
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
@@ -13,7 +15,7 @@ const Feed = () => {
   const fetchFeed = async () => {
     try {
       const res = await axios.get(
-        `${BASE_URL_PROD}/feed`,
+        `${BASE_URL}/feed`,
 
         { withCredentials: true }
       );
@@ -25,16 +27,23 @@ const Feed = () => {
   };
 
   useEffect(() => {
-    if (feed.length > 0) return ;
+    if (feed.length > 0) return;
     fetchFeed();
   }, []);
 
   return (
-    feed.length > 0 && (
-      <div className="flex justify-center items-center my-28 gap-6 flex-wrap">
-        <Card key={feed._id} cardData={feed[0]} />
-      </div>
-    )
+    <div className="flex justify-center items-center h-screen relative">
+      <AnimatePresence>
+        {feed.length > 0 &&
+          feed.map((card, index) => (
+            <Card
+              key={card._id}
+              cardData={card}
+              style={{ zIndex: feed.length - index }}
+            />
+          ))}
+      </AnimatePresence>
+    </div>
   );
 };
 

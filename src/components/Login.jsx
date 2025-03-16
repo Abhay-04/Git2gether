@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../store/slices/userSlice";
-import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
   const [isLoginPage, setIsLoginPage] = useState(false);
@@ -28,7 +28,7 @@ const Login = () => {
   const handleSignIn = async () => {
     try {
       const res = await axios.post(
-        `${BASE_URL_PROD}/login`,
+        `${BASE_URL}/login`,
         { email: email.current.value, password: password.current.value },
         { withCredentials: true }
       );
@@ -46,7 +46,7 @@ const Login = () => {
   const handleSignUp = async () => {
     try {
       const res = await axios.post(
-        `${BASE_URL_PROD}/signup`,
+        `${BASE_URL}/signup`,
         {
           firstName: firstName.current.value,
           lastName: lastName.current.value,
@@ -55,11 +55,10 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-      
 
       setIsLoginPage(false);
       setUserCreated("User Created");
-      
+
       setTimeout(() => {
         setUserCreated(null);
       }, 3000);

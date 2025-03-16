@@ -2,7 +2,7 @@
 
 const Footer = () => {
   return <div className="w-full">
-    <footer className="footer bg-base-200 text-base-content p-10">
+    <footer className="footer bg-base-200 text-base-content mt-20 p-10">
   <aside>
     
     <p className="text-2xl font-bold">

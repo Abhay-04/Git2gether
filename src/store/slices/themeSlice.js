@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // Get the theme from localStorage or default
-const initialTheme = localStorage.getItem("theme") || "dim";
+const initialTheme = localStorage.getItem("theme") || "wireframe";
 
 const themeSlice = createSlice({
   name: "theme",

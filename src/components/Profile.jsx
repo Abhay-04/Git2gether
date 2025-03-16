@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
+import { BASE_URL } from "../utils/constants";
 
 const Profile = () => {
   const user = useSelector((store) => store.user);
@@ -83,8 +83,10 @@ const Profile = () => {
   const handleUpdateProfile = async () => {
     try {
       const res = await axios.patch(
-        `${BASE_URL_PROD}/profile/edit`,
+        `${BASE_URL}/profile/edit`,
         {
+          firstName: firstName.current.value,
+          lastName: lastName.current.value,
           age: age.current.value,
           gender: gender.current.value.toLowerCase(),
           photoURL: photoURL.current.value,
@@ -156,13 +158,23 @@ const Profile = () => {
                     <img ref={photoURL} src={user.photoURL} />
                   </div>
                 </div>
-                <div className="col-span-2 flex justify-center items-center gap-x-3">
-                  <button className="btn btn-sm btn-active btn-primary">
-                    Change picture
-                  </button>
-                  <button className="btn btn-sm btn-outline btn-error">
-                    Delete picture
-                  </button>
+                <div className="col-span-2 flex gap-y-2 flex-col justify-center items-center gap-x-3">
+                  <div className="flex gap-2">
+                    <button className="btn btn-sm btn-active btn-primary">
+                      Change picture
+                    </button>
+                    <button className="btn btn-sm btn-outline btn-error">
+                      Delete picture
+                    </button>
+                  </div>
+
+                  <input
+                    ref={photoURL}
+                    defaultValue={user.photoURL}
+                    type="text"
+                    placeholder="Photo URL"
+                    className="input input-bordered w-full max-w-xs"
+                  />
                 </div>
               </div>
             </div>
@@ -180,7 +192,6 @@ const Profile = () => {
                   <input
                     ref={firstName}
                     defaultValue={user.firstName}
-                    disabled
                     type="text"
                     placeholder="Joe"
                     className="input input-bordered w-full max-w-xs"
@@ -193,7 +204,6 @@ const Profile = () => {
                   <input
                     ref={lastName}
                     defaultValue={user?.lastName}
-                    disabled
                     type="text"
                     placeholder="Smith"
                     className="input input-bordered w-full max-w-xs"
@@ -237,7 +247,7 @@ const Profile = () => {
                   </div>
                   <select
                     ref={gender}
-                    className="select select-info w-full max-w-xs"
+                    className="select select-bordered w-full max-w-xs"
                   >
                     <option disabled selected>
                       {user?.gender?.toUpperCase()}
@@ -286,7 +296,7 @@ const Profile = () => {
                     </select>
                     {/* Selected Skills */}
                     {selectedSkills.length > 0 && (
-                      <div className="flex flex-wrap gap-2 border p-2 rounded-md mt-5 min-h-[40px]">
+                      <div className="flex flex-wrap gap-2  p-2 rounded-md mt-5 min-h-[40px]">
                         {selectedSkills?.map((skill) => (
                           <button
                             key={skill}

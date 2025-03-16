@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
+
 import { removeUser } from "../store/slices/userSlice";
 import { removefeed } from "../store/slices/feedSlice";
 import { removeConnections } from "../store/slices/connectionsSlice";
+import { BASE_URL } from "../utils/constants";
 
 const Header = () => {
   const theme = useSelector((state) => state.theme.userTheme);
@@ -18,7 +19,7 @@ const Header = () => {
   const handleLogout = async () => {
     try {
       const res = await axios.post(
-        `${BASE_URL_PROD}/logout`,
+        `${BASE_URL}/logout`,
         {},
         { withCredentials: true }
       );

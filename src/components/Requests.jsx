@@ -1,9 +1,13 @@
 import { useEffect } from "react";
-import { BASE_URL_DEV, BASE_URL_PROD } from "../utils/constants";
+
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addRequest } from "../store/slices/requestSlice";
+import { BASE_URL } from "../utils/constants";
+import Card from "./Card";
+import ConnectionsCard from "./ConnectionsCard";
+import RequestCard from "./RequestCard";
 
 const Requests = () => {
   const dispatch = useDispatch();
@@ -11,7 +15,7 @@ const Requests = () => {
   const fetchRequests = async () => {
     try {
       const res = await axios.get(
-        `${BASE_URL_PROD}/user/requests/received`,
+        `${BASE_URL}/user/requests/received`,
 
         { withCredentials: true }
       );
@@ -27,12 +31,24 @@ const Requests = () => {
   }, []);
 
   return (
-    <div>
-      <h2>request</h2>
-      {request.map((req) => {
-        return <div key={req._id}>Hejka</div>;
-      })}
-    </div>
+    request && (
+      <div className="flex justify-center items-center my-10 gap-y-6">
+        <div className="card bg-base-100 w-[60vw] shadow-xl px-6 py-4 ">
+          <h1 className="text-lg font-semibold">{request.length} Requests</h1>
+
+          <div className="mt-6">
+            {request.map((req) => (
+              <RequestCard
+                key={req._id}
+                reqSendDate={req.createdAt}
+                id={req._id}
+                data={req.fromUserId}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    )
   );
 };
 

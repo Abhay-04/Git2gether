@@ -117,7 +117,7 @@ const Login = () => {
           </div>
           <input
             ref={email}
-            defaultValue={"abhay@gmail.com"}
+            defaultValue={"guest@gmail.com"}
             type="email"
             placeholder="m@example.com"
             className="input input-bordered w-full max-w-xs"
@@ -133,7 +133,7 @@ const Login = () => {
           <div className="relative w-full max-w-xs">
             <input
               ref={password}
-              defaultValue="Abhay@123"
+              defaultValue="Guest@123"
               type={!showPassword ? "password" : "text"}
               placeholder="Enter your password"
               className="input input-bordered w-full pr-16"

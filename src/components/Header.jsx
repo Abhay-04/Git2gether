@@ -54,7 +54,7 @@ const Header = () => {
           </div>
 
           {user && (
-            <div className="dropdown dropdown-end ">
+            <div className="dropdown dropdown-end z-[1000] ">
               <div
                 tabIndex={0}
                 role="button"

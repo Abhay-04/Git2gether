@@ -19,7 +19,7 @@ const ThemeSwitcher = () => {
   ];
 
   return (
-    <div className="dropdown">
+    <div className="dropdown z-[1000]">
       <div tabIndex={0} role="button" className="btn">
         THEME
         <svg width="12px" height="12px" className="inline-block h-2 w-2 fill-current opacity-60"

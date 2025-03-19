@@ -32,11 +32,11 @@ const Connections = () => {
   return (
     connections && (
       <div className="flex justify-center items-center mt-6  gap-y-6">
-        <div className="card bg-base-100 w-[60vw] shadow-xl px-6 py-4 ">
+        <div className="card bg-base-100 md:w-[60vw] w-full shadow-xl px-6 py-4 ">
           <h1 className="text-lg font-semibold">
             {connections.length} Connections
           </h1>
-          <div className="flex gap-4 justify-between ">
+          <div className="flex flex-col md:flex-row gap-4 justify-between ">
             <div className="flex justify-center items-center">
               <h1 className="w-full">Sort by :</h1>
 

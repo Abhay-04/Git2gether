@@ -32,14 +32,14 @@ const Feed = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen relative">
+    <div className="flex justify-center items-center h-[90vh]">
       <AnimatePresence>
         {feed.length > 0 &&
           feed.map((card, index) => (
             <Card
               key={card._id}
               cardData={card}
-              style={{ zIndex: feed.length - index }}
+              zIndex={feed.length - index} // Highest zIndex for the smallest index
             />
           ))}
       </AnimatePresence>

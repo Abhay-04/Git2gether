@@ -123,11 +123,11 @@ const Profile = () => {
 
   return (
     user && (
-      <div className="flex justify-center items-center pt-20 pb-40">
-        <div className="card bg-base-100 w-[50vw] shadow-xl ">
+      <div className="flex justify-center items-center py-10 md:pt-20 md:pb-40">
+        <div className="card bg-base-100 w-full  xl:w-[50vw] shadow-xl ">
           <div className="card-body flex gap-y-8">
-            <div className="grid grid-cols-12">
-              <div className="col-span-10 flex flex-col gap-1">
+            <div className="grid grid-cols-12 gap-4">
+              <div className="md:col-span-10 col-span-12 flex flex-col gap-1">
                 <h1 className="text-xl font-bold">Your Profile</h1>
                 <p className="text-xs ">
                   Last Update on{" "}
@@ -140,7 +140,7 @@ const Profile = () => {
                   </span>
                 </p>
               </div>
-              <div className="col-span-2 flex gap-x-3">
+              <div className="md:col-span-2 col-span-12 flex gap-x-2">
                 <button className="btn btn-sm btn-outline">Discard</button>
                 <button
                   onClick={() => handleUpdateProfile()}
@@ -152,13 +152,13 @@ const Profile = () => {
             </div>
             <div>
               <h1 className=" font-semibold">Profile picture</h1>
-              <div className="flex gap-x-6 mt-6">
+              <div className="flex flex-col md:flex-row gap-6 mt-6">
                 <div className="avatar">
                   <div className="w-24 rounded-full">
                     <img ref={photoURL} src={user.photoURL} />
                   </div>
                 </div>
-                <div className="col-span-2 flex gap-y-2 flex-col justify-center items-center gap-x-3">
+                <div className="col-span-2 flex gap-y-2 flex-col justify-center items-start md:items-center gap-x-3">
                   <div className="flex gap-2">
                     <button className="btn btn-sm btn-active btn-primary">
                       Change picture
@@ -183,7 +183,7 @@ const Profile = () => {
                 <i className="ri-user-3-fill mr-2"></i>Personal Information
               </h1>
               <div className="grid grid-cols-12 gap-6 mt-6">
-                <label className="form-control w-full max-w-xs col-span-4">
+                <label className="form-control w-full max-w-xs col-span-12 md:col-span-4">
                   <div className="label">
                     <span className="label-text  font-semibold">
                       First Name
@@ -197,7 +197,7 @@ const Profile = () => {
                     className="input input-bordered w-full max-w-xs"
                   />
                 </label>
-                <label className="form-control w-full max-w-xs col-span-4">
+                <label className="form-control w-full max-w-xs col-span-12 md:col-span-4">
                   <div className="label">
                     <span className="label-text font-semibold">Last Name</span>
                   </div>
@@ -209,7 +209,7 @@ const Profile = () => {
                     className="input input-bordered w-full max-w-xs"
                   />
                 </label>
-                <label className="form-control w-full max-w-xs col-span-4">
+                <label className="form-control w-full max-w-xs col-span-12 md:col-span-4">
                   <div className="label">
                     <span className="label-text font-semibold">Email</span>
                   </div>
@@ -222,7 +222,7 @@ const Profile = () => {
                     className="input input-bordered w-full max-w-xs"
                   />
                 </label>
-                <label className="form-control w-full max-w-xs col-span-4">
+                <label className="form-control w-full max-w-xs col-span-12 md:col-span-4">
                   <div className="label">
                     <span className="label-text font-semibold">Age</span>
                   </div>
@@ -241,7 +241,7 @@ const Profile = () => {
                   />
                 </label>
 
-                <label className="form-control w-full max-w-xs col-span-4">
+                <label className="form-control w-full max-w-xs col-span-12 md:col-span-4">
                   <div className="label">
                     <span className="label-text font-semibold">Gender</span>
                   </div>
@@ -257,7 +257,7 @@ const Profile = () => {
                   </select>
                 </label>
 
-                <label className="form-control col-span-12">
+                <label className="form-control col-span-12 ">
                   <div className="label">
                     <span className="label-text font-semibold">Your bio</span>
                   </div>
@@ -315,7 +315,7 @@ const Profile = () => {
             {message && (
               <div className="toast toast-end">
                 <div className="alert alert-success">
-                  <span className="text-white">{message.toUpperCase()}</span>
+                  <span className="text-white text-xs md:text-sm ">{message.toUpperCase()}</span>
                 </div>
               </div>
             )}

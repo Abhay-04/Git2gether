@@ -33,7 +33,7 @@ const Requests = () => {
   return (
     request && (
       <div className="flex justify-center items-center my-10 gap-y-6">
-        <div className="card bg-base-100 w-[60vw] shadow-xl px-6 py-4 ">
+        <div className="card bg-base-100 md:w-[60vw] w-full shadow-xl px-6 py-4">
           <h1 className="text-lg font-semibold">{request.length} Requests</h1>
 
           <div className="mt-6">

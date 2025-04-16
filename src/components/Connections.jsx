@@ -58,7 +58,6 @@ const Connections = () => {
             {connections.map((conn) => (
               <ConnectionsCard key={conn._id} data={conn} />
             ))}
-           
           </div>
         </div>
       </div>

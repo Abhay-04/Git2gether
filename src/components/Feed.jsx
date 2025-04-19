@@ -34,14 +34,23 @@ const Feed = () => {
   return (
     <div className="flex justify-center items-center h-[90vh]">
       <AnimatePresence>
-        {feed.length > 0 &&
+        {feed.length > 0 ? (
           feed.map((card, index) => (
             <Card
               key={card._id}
               cardData={card}
               zIndex={feed.length - index} // Highest zIndex for the smallest index
             />
-          ))}
+          ))
+        ) : (
+          <div className="text-center text-secondary text-lg lg:text-4xl font-bold ">
+            “Your feed’s feeling lonely right now 👀” <br></br>
+            <span className="text-primary text-xs lg:text-base">
+              Hang tight — new vibes are on the way as more users join the
+              party!
+            </span>
+          </div>
+        )}
       </AnimatePresence>
     </div>
   );

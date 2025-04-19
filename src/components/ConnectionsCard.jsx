@@ -17,10 +17,10 @@ const ConnectionsCard = ({ data }) => {
         <h1 className="font-semibold">
           {firstName} {lastName}
         </h1>
-       
+
         <h1>{about}</h1>
         <h4 className="text-xs opacity-80">
-          connected on {" "}
+          connected on{" "}
           {new Date(createdAt).toLocaleDateString("en-IN", {
             day: "2-digit",
             month: "long",

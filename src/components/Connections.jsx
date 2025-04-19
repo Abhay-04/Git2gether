@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../store/slices/connectionsSlice";
-import Card from "./Card";
+
 import { BASE_URL } from "../utils/constants";
 import ConnectionsCard from "./ConnectionsCard";
 
@@ -55,9 +55,16 @@ const Connections = () => {
             </div>
           </div>
           <div className="">
-            {connections.map((conn) => (
-              <ConnectionsCard key={conn._id} data={conn} />
-            ))}
+            {connections.length > 0 ? (
+              connections.map((conn) => (
+                <ConnectionsCard key={conn._id} data={conn} />
+              ))
+            ) : (
+              <p className="text-center text-secondary text-xs xl:text-base my-16 xl:my-6 ">
+                <span className="font-bold xl:text-2xl text-lg text-primary ">You don't have any connections yet.</span> <br></br>
+                Add some connections to get started.
+              </p>
+            )}
           </div>
         </div>
       </div>

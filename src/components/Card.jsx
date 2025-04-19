@@ -23,7 +23,7 @@ const Card = ({ cardData, zIndex }) => {
 
   return (
     <motion.div
-      className=" card  border-2 border-black  absolute cursor-pointer bg-[#17181d] h-[88vh] xl:h-[85vh] 2xl:h-[65vh]  sm:w-[45vw] lg:w-[35vw] xl:min-w-[22vw] 2xl:w-[20vw] mx-2 mb-6 py-4 px-2 rounded-lg"
+      className=" card  border-2 border-black  absolute cursor-pointer bg-[#17181d] h-[82vh] xl:h-[85vh] 2xl:h-[65vh]  sm:w-[45vw] lg:w-[35vw] xl:min-w-[22vw] 2xl:w-[20vw] mx-2 mb-6 py-4 px-2 rounded-lg"
       initial={{ scale: 0.9, opacity: 0, zIndex: zIndex }}
       animate={{ scale: 1, opacity: 1 }}
       exit={{ opacity: 0 }} // Move right on exit

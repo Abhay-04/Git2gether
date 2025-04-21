@@ -20,11 +20,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const userData = useSelector((state) => state.user);
-  if (userData) {
-    navigate("/");
-    return null;
-  }
   const handleSignIn = async () => {
     try {
       const res = await axios.post(
@@ -55,13 +50,8 @@ const Login = () => {
         },
         { withCredentials: true }
       );
-
-      setIsLoginPage(false);
-      setUserCreated("User Created");
-
-      setTimeout(() => {
-        setUserCreated(null);
-      }, 3000);
+      dispatch(addUser(res.data.user));
+      navigate("/profile");
     } catch (error) {
       console.log(error);
       setErrorMessage(error.response.data);
